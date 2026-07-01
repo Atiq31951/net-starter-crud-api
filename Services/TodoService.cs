@@ -29,4 +29,29 @@ public class TodoService : ITodoService
         _todos.Add(item);
         return item;
     }
+
+    public bool Update(int id, TodoItem updated)
+    {
+        var existing = GetById(id);
+        if (existing == null)
+        {
+            return false;
+        }
+
+        existing.Title = updated.Title;
+        existing.IsDone = updated.IsDone;
+        return true;
+    }
+
+    public bool Delete(int id)
+    {
+        var existing = GetById(id);
+        if (existing == null)
+        {
+            return false;
+        }
+
+        _todos.Remove(existing);
+        return true;
+    }
 }

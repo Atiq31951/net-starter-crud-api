@@ -40,4 +40,28 @@ public class TodosController : ControllerBase
         var createdTodo = _todoService.Add(item);
         return CreatedAtAction(nameof(GetById), new { id = createdTodo.Id }, createdTodo);
     }
+
+    [HttpPut("{id:int}")]
+    public IActionResult Update(int id, TodoItem updated)
+    {
+        var success = _todoService.Update(id, updated);
+        if (!success)
+        {
+            return NotFound();
+        }
+
+        return NoContent();
+    }
+
+    [HttpDelete("{id:int}")]
+    public IActionResult Delete(int id)
+    {
+        var success = _todoService.Delete(id);
+        if (!success)
+        {
+            return NotFound();
+        }
+
+        return NoContent();
+    }
 }

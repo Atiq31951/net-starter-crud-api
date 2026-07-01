@@ -5,25 +5,19 @@ Accept: application/json
 
 ###
 
-# Get all todos
+# 1. Get all todos (seed has 3 todos)
 GET {{net_basic_todo_HostAddress}}/api/todos
 Accept: application/json
 
 ###
 
-# Get existing todo by id
+# 2. Get existing todo by id (id = 1)
 GET {{net_basic_todo_HostAddress}}/api/todos/1
 Accept: application/json
 
 ###
 
-# Get non-existing todo by id (returns 404)
-GET {{net_basic_todo_HostAddress}}/api/todos/999
-Accept: application/json
-
-###
-
-# Create a new todo
+# 3. Create a new todo (will get id = 4)
 POST {{net_basic_todo_HostAddress}}/api/todos
 Content-Type: application/json
 
@@ -34,8 +28,40 @@ Content-Type: application/json
 
 ###
 
-# Get newly created todo by id (id = 4)
-GET {{net_basic_todo_HostAddress}}/api/todos/4
+# 4. Update an existing todo (id = 1)
+PUT {{net_basic_todo_HostAddress}}/api/todos/1
+Content-Type: application/json
+
+{
+  "title": "Learn C# and .NET (Updated!)",
+  "isDone": true
+}
+
+###
+
+# 5. Update a non-existing todo (returns 404)
+PUT {{net_basic_todo_HostAddress}}/api/todos/999
+Content-Type: application/json
+
+{
+  "title": "Ghost todo",
+  "isDone": false
+}
+
+###
+
+# 6. Delete an existing todo (id = 2)
+DELETE {{net_basic_todo_HostAddress}}/api/todos/2
+
+###
+
+# 7. Delete the same todo again (returns 404)
+DELETE {{net_basic_todo_HostAddress}}/api/todos/2
+
+###
+
+# 8. Get all todos at the end to see the final state
+GET {{net_basic_todo_HostAddress}}/api/todos
 Accept: application/json
 
 ###
