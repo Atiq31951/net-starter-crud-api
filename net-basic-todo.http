@@ -1,0 +1,6 @@
+@net_basic_todo_HostAddress = http://localhost:5190
+
+GET {{net_basic_todo_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
