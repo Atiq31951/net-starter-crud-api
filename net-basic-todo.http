@@ -5,7 +5,37 @@ Accept: application/json
 
 ###
 
+# Get all todos
 GET {{net_basic_todo_HostAddress}}/api/todos
+Accept: application/json
+
+###
+
+# Get existing todo by id
+GET {{net_basic_todo_HostAddress}}/api/todos/1
+Accept: application/json
+
+###
+
+# Get non-existing todo by id (returns 404)
+GET {{net_basic_todo_HostAddress}}/api/todos/999
+Accept: application/json
+
+###
+
+# Create a new todo
+POST {{net_basic_todo_HostAddress}}/api/todos
+Content-Type: application/json
+
+{
+  "title": "Build CRUD endpoints in ASP.NET Core",
+  "isDone": false
+}
+
+###
+
+# Get newly created todo by id (id = 4)
+GET {{net_basic_todo_HostAddress}}/api/todos/4
 Accept: application/json
 
 ###

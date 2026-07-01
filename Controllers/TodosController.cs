@@ -21,4 +21,23 @@ public class TodosController : ControllerBase
         var todos = _todoService.GetAll();
         return Ok(todos);
     }
+
+    [HttpGet("{id:int}")]
+    public ActionResult<TodoItem> GetById(int id)
+    {
+        var todo = _todoService.GetById(id);
+        if (todo == null)
+        {
+            return NotFound();
+        }
+
+        return Ok(todo);
+    }
+
+    [HttpPost]
+    public ActionResult<TodoItem> Create(TodoItem item)
+    {
+        var createdTodo = _todoService.Add(item);
+        return CreatedAtAction(nameof(GetById), new { id = createdTodo.Id }, createdTodo);
+    }
 }

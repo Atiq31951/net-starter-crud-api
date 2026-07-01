@@ -13,4 +13,16 @@ public class FakeTodoService : ITodoService
     {
         return _fakeTodos;
     }
+
+    public TodoItem? GetById(int id)
+    {
+        return _fakeTodos.FirstOrDefault(t => t.Id == id);
+    }
+
+    public TodoItem Add(TodoItem item)
+    {
+        item.Id = 100;
+        _fakeTodos.Add(item);
+        return item;
+    }
 }
