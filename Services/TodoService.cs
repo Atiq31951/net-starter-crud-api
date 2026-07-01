@@ -2,7 +2,7 @@ using net_basic_todo.Models;
 
 namespace net_basic_todo.Services;
 
-public class TodoService
+public class TodoService : ITodoService
 {
     private readonly List<TodoItem> _todos = new()
     {

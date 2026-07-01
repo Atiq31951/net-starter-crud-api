@@ -1,9 +1,11 @@
+using net_basic_todo.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
-builder.Services.AddSingleton<net_basic_todo.Services.TodoService>();
+builder.Services.AddSingleton<ITodoService, TodoService>();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 

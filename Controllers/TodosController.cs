@@ -8,9 +8,9 @@ namespace net_basic_todo.Controllers;
 [Route("api/todos")]
 public class TodosController : ControllerBase
 {
-    private readonly TodoService _todoService;
+    private readonly ITodoService _todoService;
 
-    public TodosController(TodoService todoService)
+    public TodosController(ITodoService todoService)
     {
         _todoService = todoService;
     }
