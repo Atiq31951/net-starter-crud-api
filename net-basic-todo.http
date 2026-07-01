@@ -4,3 +4,8 @@ GET {{net_basic_todo_HostAddress}}/api/health
 Accept: application/json
 
 ###
+
+GET {{net_basic_todo_HostAddress}}/api/todos
+Accept: application/json
+
+###
