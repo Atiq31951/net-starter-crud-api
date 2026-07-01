@@ -1,22 +1,24 @@
 using Microsoft.AspNetCore.Mvc;
 using net_basic_todo.Models;
+using net_basic_todo.Services;
 
 namespace net_basic_todo.Controllers;
 
 [ApiController]
-[Route("api/[controller]")]
+[Route("api/todos")]
 public class TodosController : ControllerBase
 {
+    private readonly TodoService _todoService;
+
+    public TodosController(TodoService todoService)
+    {
+        _todoService = todoService;
+    }
+
     [HttpGet]
     public ActionResult<List<TodoItem>> GetAll()
     {
-        var todos = new List<TodoItem>
-        {
-            new TodoItem { Id = 1, Title = "Learn C# and .NET", IsDone = true },
-            new TodoItem { Id = 2, Title = "Build Todo API", IsDone = false },
-            new TodoItem { Id = 3, Title = "Master ASP.NET Core", IsDone = false }
-        };
-
+        var todos = _todoService.GetAll();
         return Ok(todos);
     }
 }
